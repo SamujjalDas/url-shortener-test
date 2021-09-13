@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="0" failed="0" ignored="0" total="5" passed="5">
+  <reporter-output>
+  </reporter-output>
+  <suite name="Suite" duration-ms="6213" started-at="2021-09-13T21:19:12 IST" finished-at="2021-09-13T21:19:18 IST">
+    <groups>
+    </groups>
+    <test name="Test" duration-ms="6213" started-at="2021-09-13T21:19:12 IST" finished-at="2021-09-13T21:19:18 IST">
+      <class name="com.qa.urlshortener.testcases.ConnectionTest">
+        <test-method status="PASS" signature="testBody()[pri:0, instance:com.qa.urlshortener.testcases.ConnectionTest@553f17c]" name="testBody" duration-ms="5154" started-at="2021-09-13T21:19:12 IST" finished-at="2021-09-13T21:19:17 IST">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testBody -->
+        <test-method status="PASS" signature="testResponseCode()[pri:0, instance:com.qa.urlshortener.testcases.ConnectionTest@553f17c]" name="testResponseCode" duration-ms="32" started-at="2021-09-13T21:19:17 IST" finished-at="2021-09-13T21:19:17 IST">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testResponseCode -->
+      </class> <!-- com.qa.urlshortener.testcases.ConnectionTest -->
+      <class name="com.qa.urlshortener.testcases.UrlShortenerServiceTest">
+        <test-method status="PASS" signature="generateTest()[pri:0, instance:com.qa.urlshortener.testcases.UrlShortenerServiceTest@1ce92674]" name="generateTest" duration-ms="133" started-at="2021-09-13T21:19:17 IST" finished-at="2021-09-13T21:19:17 IST">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- generateTest -->
+        <test-method status="PASS" signature="redirectTest()[pri:1, instance:com.qa.urlshortener.testcases.UrlShortenerServiceTest@1ce92674]" name="redirectTest" duration-ms="113" started-at="2021-09-13T21:19:17 IST" finished-at="2021-09-13T21:19:17 IST">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- redirectTest -->
+        <test-method status="PASS" signature="urlShortenerTest()[pri:2, instance:com.qa.urlshortener.testcases.UrlShortenerServiceTest@1ce92674]" name="urlShortenerTest" duration-ms="656" started-at="2021-09-13T21:19:17 IST" finished-at="2021-09-13T21:19:18 IST">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- urlShortenerTest -->
+      </class> <!-- com.qa.urlshortener.testcases.UrlShortenerServiceTest -->
+    </test> <!-- Test -->
+  </suite> <!-- Suite -->
+</testng-results>
