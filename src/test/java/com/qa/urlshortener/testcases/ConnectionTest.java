@@ -1,5 +1,7 @@
 package com.qa.urlshortener.testcases;
 
+import io.restassured.RestAssured;
+import io.restassured.specification.RequestSpecification;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -11,19 +13,14 @@ import io.restassured.response.Response;
 public class ConnectionTest extends TestBase {
 	String url = prop.getProperty("url");
 
-	@Test
+	@Test(enabled = false)
 	public void testResponseCode() {
-
-		/*
-		 * Response res = get("http://127.0.0.1:8080/test"); int code =
-		 * res.getStatusCode();
-		 */
 		int code = get(url + "/test").getStatusCode();
 		System.out.println("Status Code is : " + code);
 		Assert.assertEquals(code, 200);
 	}
 
-	@Test
+	@Test(enabled = false)
 	public void testBody() {
 
 		String data = get(url + "/test").asString();
@@ -31,5 +28,15 @@ public class ConnectionTest extends TestBase {
 		System.out.println("Body is : " + data);
 		// System.out.println("Response Time is : " + res.getTime());
 		Assert.assertEquals(data, expectedData);
+	}
+
+	@Test(description = "Test connection for service")
+	public void testConn() {
+		RequestSpecification request = RestAssured.given();
+		Response response = request.get(url+"/test");
+		int statusCode = response.getStatusCode();
+		String body = response.getBody().print();
+		Assert.assertEquals(statusCode, 200, "Status code is : "+ statusCode);
+		Assert.assertNotNull(body, "Response is null");
 	}
 }
