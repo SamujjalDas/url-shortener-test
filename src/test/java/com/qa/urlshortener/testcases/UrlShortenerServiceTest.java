@@ -18,7 +18,7 @@ import io.restassured.specification.RequestSpecification;
 
 public class UrlShortenerServiceTest extends TestBase {
 	String url = prop.getProperty("url");
-	String longUrl = prop.getProperty("longUrl");;
+	private static final String LONG_URL = "https://www.amazon.in/Lenovo-IdeaPad-Gaming-39-62cm-82K201V2IN/dp/B0B7RXC1Y1?ref_=Oct_DLandingS_D_416a10e7_70&th=1";
 
 	@SuppressWarnings("unchecked")
 	@Test(priority = 0, enabled = false)
@@ -26,7 +26,7 @@ public class UrlShortenerServiceTest extends TestBase {
 		RequestSpecification request = given();
 		request.header("Content-Type", "application/json");
 		JSONObject json = new JSONObject();
-		json.put("url", longUrl);
+		json.put("url", LONG_URL);
 		request.body(json.toJSONString());
 		Response response = request.post(url + "/generate");
 		int code = response.getStatusCode();
@@ -52,15 +52,14 @@ public class UrlShortenerServiceTest extends TestBase {
 	public void urlShortenerTest() throws JsonProcessingException, IOException {
 		RequestSpecification request = given();
 		request.header("Content-Type", "application/json");
-		String longUrl = "https://www.amazon.in/Lenovo-IdeaPad-Gaming-39-62cm-82K201V2IN/dp/B0B7RXC1Y1?ref_=Oct_DLandingS_D_416a10e7_70&th=1";
 		JSONObject json = new JSONObject();
-		json.put("url", longUrl);
+		json.put("url", LONG_URL);
 		request.body(json.toJSONString());
 		Response response = request.post(url + "/generate");
 		int statusCode = response.getStatusCode();
 		Assert.assertEquals(statusCode, 200, "Status code is "+statusCode);
 		System.out.println("Response is : " + response.getBody().print());
-		Assert.assertEquals(longUrl, getDataFromJson(response.getBody().asString(), "originalUrl"));
+		Assert.assertEquals(LONG_URL, getDataFromJson(response.getBody().asString(), "originalUrl"));
 		String shortLink = getDataFromJson(response.getBody().asString(), "shortLink");
 		Assert.assertNotNull(shortLink, "Short link is empty");
 		Assert.assertNotNull(getDataFromJson(response.getBody().asString(), "expirationDate"), "Expiration date is empty"); //add validation on exact date
