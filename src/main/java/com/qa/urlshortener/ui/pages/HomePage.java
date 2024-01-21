@@ -1,10 +1,15 @@
 package com.qa.urlshortener.ui.pages;
 
 import com.qa.urlshortener.base.TestBase;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
+
+import javax.xml.xpath.XPath;
 
 public class HomePage extends TestBase {
 
@@ -24,10 +29,10 @@ public class HomePage extends TestBase {
     private WebElement shortenButton;
 
     @FindBy(xpath = "//p[contains(text(),'Original URL:')]")
-    private WebElement originalUrlHeader;
+    private WebElement originalUrlText;
 
     @FindBy(xpath = "//p[contains(text(),' Short URL: ')]")
-    private WebElement shortUrlHeader;
+    private WebElement shortUrlText;
 
     @FindBy(xpath = "//h7[contains(text(),'The short URL will automatically be deleted after three months')]")
     private WebElement expiryInfo;
@@ -38,6 +43,8 @@ public class HomePage extends TestBase {
     @FindBy(xpath = "//p[contains(text(),' Original URL: ')]//following-sibling::a")
     private WebElement originalUrl;
 
+    By shortUrlTextXpath = By.xpath("//p[contains(text(),' Short URL: ')]");
+
     public HomePage() {
         PageFactory.initElements(driver, this);
     }
@@ -45,8 +52,10 @@ public class HomePage extends TestBase {
     public void shortenUrl(String longUrl) throws InterruptedException {
         inputPlaceholder.sendKeys(longUrl);
         shortenButton.click();
-        Assert.assertTrue(shortUrlHeader.isDisplayed());
-        Assert.assertTrue(originalUrlHeader.isDisplayed());
+        WebDriverWait wait = new WebDriverWait(driver, 30);
+        wait.until(ExpectedConditions.visibilityOfElementLocated(shortUrlTextXpath));
+        Assert.assertTrue(shortUrlText.isDisplayed());
+        Assert.assertTrue(originalUrlText.isDisplayed());
         Assert.assertTrue(expiryInfo.isDisplayed());
         Assert.assertTrue(shortUrl.isDisplayed());
         Assert.assertTrue(originalUrl.isDisplayed());
