@@ -25,7 +25,6 @@ public class UrlShortenerUITest extends TestBase {
         homePage.shortenUrl(LONG_URL);
         Assert.assertEquals(homePage.getOriginalUrl(), LONG_URL);
         homePage.clickOnShortUrl();
-        Thread.sleep(8000);
         String redirectedUrl = driver.getCurrentUrl();
         Assert.assertEquals(redirectedUrl, LONG_URL, "Redirected URL is : "+redirectedUrl);
     }

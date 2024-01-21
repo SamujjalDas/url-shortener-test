@@ -45,7 +45,6 @@ public class HomePage extends TestBase {
     public void shortenUrl(String longUrl) throws InterruptedException {
         inputPlaceholder.sendKeys(longUrl);
         shortenButton.click();
-        Thread.sleep(8000);
         Assert.assertTrue(shortUrlHeader.isDisplayed());
         Assert.assertTrue(originalUrlHeader.isDisplayed());
         Assert.assertTrue(expiryInfo.isDisplayed());

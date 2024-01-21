@@ -26,7 +26,6 @@ public class ConnectionTest extends TestBase {
 		String data = get(url + "/test").asString();
 		String expectedData = "Service is Up";
 		System.out.println("Body is : " + data);
-		// System.out.println("Response Time is : " + res.getTime());
 		Assert.assertEquals(data, expectedData);
 	}
 
