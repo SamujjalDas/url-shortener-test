@@ -28,7 +28,7 @@ public class UrlShortenerServiceRestClientTest extends TestBase {
 
 	@SuppressWarnings("unchecked")
 	@Test(priority = 2, enabled = true)
-	public void urlShortenerTest() throws JsonProcessingException, IOException, UnirestException {
+	public void urlShortenerTest() throws IOException, UnirestException {
 
 		Map<String, String> header = new HashMap<>();
 		header.put("Content-Type", "application/json");
