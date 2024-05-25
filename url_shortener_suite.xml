@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Suite">
+    <listeners>
+        <listener class-name="com.qa.urlshortener.base.ListenerClass"></listener>
+    </listeners>
+  <test parallel="classes" thread-count="3" name="Test">
+    <classes>
+      <class name="com.qa.urlshortener.tests.backend.ConnectionTest"/>
+      <class name="com.qa.urlshortener.tests.backend.UrlShortenerServiceTest"/>
+      <class name="com.qa.urlshortener.tests.ui.UrlShortenerUITest"/>
+    </classes>
+  </test> <!-- Test -->
+</suite> <!-- Suite -->

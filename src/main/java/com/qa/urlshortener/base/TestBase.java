@@ -3,12 +3,17 @@ package com.qa.urlshortener.base;
 import com.qa.urlshortener.util.TestUtil;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import io.github.bonigarcia.wdm.managers.ChromeDriverManager;
+import org.apache.commons.io.FileUtils;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.Date;
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 
@@ -36,7 +41,7 @@ public class TestBase {
 	public static void webDriverInitialization() {
 		String browserName = prop.getProperty("browser");
 		if(browserName.equals("chrome")) {
-			WebDriverManager.chromedriver().setup();
+			WebDriverManager.chromedriver().clearDriverCache().setup();
 			driver = new ChromeDriver();
 		}
 		driver.manage().window().maximize();
@@ -48,5 +53,16 @@ public class TestBase {
 
 	public static void tearDown() {
 		driver.quit();
+	}
+
+	public void captureScreenshot(String methodName) {
+		long timestamp = System.currentTimeMillis();
+
+		try {
+			File file = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+			FileUtils.copyFile(file, new File("C:\\SD\\Projects\\url-shortener-test\\src\\main\\resources\\"+methodName+timestamp+".jpg"));
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 }

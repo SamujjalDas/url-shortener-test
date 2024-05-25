@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Snaply Backend Suite">
+  <test parallel="classes" thread-count="3" name="Snaply Backend Tests">
+    <classes>
+      <class name="com.qa.urlshortener.tests.backend.ConnectionTest"/>
+      <class name="com.qa.urlshortener.tests.backend.UrlShortenerServiceTest"/>
+    </classes>
+  </test> <!-- Test -->
+</suite> <!-- Suite -->

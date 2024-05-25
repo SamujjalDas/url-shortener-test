@@ -20,7 +20,7 @@ public class UrlShortenerServiceTest extends TestBase {
 	String url = prop.getProperty("url");
 	private static final String LONG_URL = "https://www.amazon.in/Lenovo-IdeaPad-Gaming-39-62cm-82K201V2IN/dp/B0B7RXC1Y1?ref_=Oct_DLandingS_D_416a10e7_70&th=1";
 
-	@SuppressWarnings("unchecked")
+/*	@SuppressWarnings("unchecked")
 	@Test(priority = 0, enabled = false)
 	public void generateTest() throws JsonProcessingException, IOException {
 		RequestSpecification request = given();
@@ -45,7 +45,7 @@ public class UrlShortenerServiceTest extends TestBase {
 		System.out.println("Response code is : " + code);
 		Assert.assertEquals(code, 200);
 
-	}
+	}*/
 
 	@SuppressWarnings("unchecked")
 	@Test(priority = 2, enabled = true)

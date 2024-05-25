@@ -13,7 +13,7 @@ import io.restassured.response.Response;
 public class ConnectionTest extends TestBase {
 	String url = prop.getProperty("url");
 
-	@Test(enabled = false)
+	/*@Test(enabled = false)
 	public void testResponseCode() {
 		int code = get(url + "/test").getStatusCode();
 		System.out.println("Status Code is : " + code);
@@ -28,7 +28,7 @@ public class ConnectionTest extends TestBase {
 		System.out.println("Body is : " + data);
 		Assert.assertEquals(data, expectedData);
 	}
-
+*/
 	@Test(description = "Test connection for service")
 	public void testConn() {
 		RequestSpecification request = RestAssured.given();
